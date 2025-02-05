@@ -1,0 +1,91 @@
+<html> // Menandakan bahwa dokumen adalah halaman HTML.
+<head> // Berisi informasi meta tentang dokumen.
+    <title>Aplikasi Kalkulator Sederhana</title> // untuk menetapkan judul halaman web akan ditampilkan pada web browser.
+    <style> // mendefinisikan CSS dalam dokumen HTML.
+        body{ // Menyimpan semua konten yang ditampilkan di halaman.
+            background-color: red; // Menentukan warna latar belakang (background) elemen dalam halaman web. 
+            font-family: monospace; // Menentukan jenis huruf atau font yang digunakan pada teks di dalam elemen HTML.
+        }
+        table{ // digunakan untuk mendefinisikan seluruh tabel.
+            width: 320px; // digunakan untuk mengatur lebar elemen, dalam hal ini tabel atau kolom dalam tabel. 
+            margin: 40px auto; // digunakan untuk mengatur jarak di luar batas tabel, yaitu ruang antara tabel dan elemen lainnya di sekitarnya.
+            background-color: white;
+            border-color: white; // digunakan untuk mengatur warna batas (border) dari elemen, termasuk tabel atau sel tabel.
+        }
+        td{ // mendefinisikan sel dalam baris tabel.
+            width: 25%;
+            border-color: white;
+        }
+        button{ // digunakan untuk membuat tombol interaktif yang dapat digunakan untuk berbagai tindakan, seperti mengirimkan form.
+            height: 70px; // digunakan untuk mengatur tinggi dari tombol.
+            font-size: 30px; // digunakan untuk mengatur ukuran teks di dalam tombol.
+            border: none; // digunakan untuk mengatur tampilan batas tombol. 
+            text-align: center; // digunakan untuk mengatur perataan horizontal teks di dalam tombol.
+            width: 100%;
+        }
+        #inputLabel{ // adalah cara untuk merujuk pada elemen dengan ID inputlabel dalam CSS atau JavaScript.
+            height: 100px;
+            font-size: 60px;
+            background-color: #dedbdb;
+            vertical-align: bottom; // digunakan untuk mengatur perataan vertikal dari elemen yang berada di dalam konteks tertentu (seperti dalam baris teks atau dalam layout tabel).
+            text-align: right; 
+        }
+    </style>
+</head>
+<body>
+    <table border=""cellspacing="0"> // untuk menambahkan garis batas
+        <tr> // digunakan untuk mengelompokkan sel-sel dalam satu baris dalam tabel.
+            <td colspan="4"id="inputLabel">0</td> // untuk mengatur jumlah kololm yang akan digabungkan.
+        </tr>
+        <tr>
+            <td colspan="2"><button onclick="tombol(this)">AC</button></td> // untuk menentukan aksi atau fungsi javascript yang dijalankan saat tombol tersebut diklik.
+            <td><button onclick="tombol(this)">Del</button></td>
+            <td><button onclick="tombol(this)">/</button></td>
+        </tr> // tag penutup elemen
+        <tr>
+            <td><button onclick="tombol(this)">7</button></td>
+            <td><button onclick="tombol(this)">8</button></td>
+            <td><button onclick="tombol(this)">9</button></td>
+            <td><button onclick="tombol(this)">*</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="tombol(this)">4</button></td>
+            <td><button onclick="tombol(this)">5</button></td>
+            <td><button onclick="tombol(this)">6</button></td>
+            <td><button onclick="tombol(this)">-</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="tombol(this)">1</button></td>
+            <td><button onclick="tombol(this)">2</button></td>
+            <td><button onclick="tombol(this)">3</button></td>
+            <td><button onclick="tombol(this)">+</button></td>
+        
+        </tr>
+        <tr>
+            <td colspan="2"><button onclick="tombol(this)">0</button></td>
+            <td><button onclick="tombol(this)">.</button></td>
+            <td><button onclick="tombol(this)">=</button></td> 
+        </tr>
+        </table> // untuk menampilkan data dalam format garis dan kolom.
+        <script> // digunakan untuk membuat halaman web menjadi lebih interaktif dan dinamis.
+            var inputLabel = document.getElementById('inputLabel'); // untuk mendeklarasikan sebuah variabel yang merujuk pada elemen di dalam halaman web.
+
+            function tombol(obj){ // untuk memunkinkan interaksi pengguna dengan halaman web,seperti menjalankan sebuah aksi atau memicu peristiwa tertentu.
+                var kondisi = obj.innerHTML; // untuk menyimpan nilai boolean(true atau false)
+                if(kondisi=="="){ // mengeksekusi kode tertentu berdasarkan kondisi yang diberikan.
+                    inputLabel.innerHTML = eval(inputLabel.innerHTML); // untuk mengeksekusi kode javascript yang diberikan dalam bentuk string.
+                }else if(kondisi=="AC"){ // digunakan untuk memeriksa beberapa kondisi secara berturut-turut setelah kondisi pertama (if) dievaluasi.
+                    inputLabel.innerHTML="0";
+                }else if(kondisi=="Del"){
+                    inputLabel.innerHTML=inputLabel.innerHTML.slice(0,-1)||'0'; // untuk mengakses atau mengubah konten HTML.
+                }else{ // digunakan untuk mengeksekusi blok kode alternatif jika kondisi dalam if tidak terpenuhi (bernilai false).
+                    if(inputLabel.innerHTML=="0"){ // digunakan untuk memeriksa apakah suatu kondisi atau ekspresi bernilai benar (True).
+                        inputLabel.innerHTML = kondisi; // digunakan untuk mengubah konten HTML dari elemen yang direferensikan oleh inputLabel dengan nilai dari variabel kondisi.
+                    }else{
+                        inputLabel.innerHTML+= kondisi; // digunakan untuk menambahkan (append) konten HTML ke elemen dengan ID atau referensi inputLabel, berdasarkan nilai dari variabel kondisi.
+                    }
+                }
+            }
+        </script> // menandakan akhir dari bagian skrip JavaScript dalam dokumen HTML.
+    </body> // tag penutup untuk bagian <body> dalam dokumen HTML.
+</html> // tag penutup untuk dokumen HTML itu sendiri.
